@@ -1,10 +1,14 @@
 name: 'Comment coverage'
 description: 'JavaScript commenting coverage'
 inputs:
-  who-to-greet: # id of input
-    description: 'Who to greet'
+  minPercentageCoverage: # id of input
+    description: 'The minimum percentage coverage'
     required: true
-    default: 'World'
+    default: '80'
+  includeFolders: # id of input
+    description: 'The folders to include'
+    required: false
+    default: './src'
 outputs:
   time: # id of output
     description: 'The time we greeted you'

@@ -60,9 +60,22 @@ The time we greeted you.
 ## Example usage
 
 ```
-uses: actions/hello-world-javascript-action@v1.1
-with:
-    who-to-greet: 'Mona the Octocat'
+jobs:
+  comment_coverage:
+    runs-on: ubuntu-latest
+    name: A job to check the comment coverage
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Hello world action step
+        id: hello
+        uses: FireboltCasters/comment-coverage@v1.8
+        with:
+          minPercentageCoverage: '80'
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
 ```
 
 ## Contributors
