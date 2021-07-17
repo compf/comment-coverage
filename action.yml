@@ -1,5 +1,5 @@
-name: 'comment-coverage'
-description: 'Greet someone and record the time'
+name: 'Comment coverage'
+description: 'JavaScript commenting coverage'
 inputs:
   who-to-greet: # id of input
     description: 'Who to greet'
