@@ -6300,13 +6300,23 @@ var __webpack_exports__ = {};
 var core = __nccwpck_require__(186);
 var github = __nccwpck_require__(438);
 var execSync = __nccwpck_require__(129).execSync;
+var fs = __nccwpck_require__(747);
+var TsConfigJSON = {
+    "include": ["src/**/*.ts", "src/**/*.js"],
+    "exclude": ["src/tests/**/*", "src/ignoreCoverage/**/*"]
+};
 console.log('Start Index');
 runDocumentation();
 function runDocumentation() {
+    console.log("Install compodoc");
     var installOutput = execSync('npm install @compodoc/compodoc@1.0.5', {
         encoding: 'utf-8',
     });
     var output = '';
+    console.log("Write tsconfic.doc.json");
+    var stringJSON = JSON.stringify(TsConfigJSON, null, 2);
+    console.log(stringJSON);
+    fs.writeFileSync("./tsconfig.doc.json", stringJSON);
     try {
         output = execSync('npx compodoc -p tsconfig.doc.json --coverageTest', {
             encoding: 'utf-8',
@@ -6315,8 +6325,10 @@ function runDocumentation() {
     catch (err) {
         output = err.stdout;
     }
+    console.log(output);
     var regex = /Documentation coverage \(\d+/g;
     var resultList = output.match(regex);
+    console.log(resultList);
     if (resultList) {
         var result = resultList[0];
         var coverage = parseInt(result.split('(')[1]);
