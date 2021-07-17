@@ -1,6 +1,6 @@
 {
   "name": "comment-coverage",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "comment-coverage",
   "main": "index.js",
   "types": "index.d.ts",
