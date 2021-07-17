@@ -6,17 +6,18 @@
   "types": "index.d.ts",
   "scripts": {
     "coverage": "jest --coverage",
-    "test": "pwd && npm run build && npm run testOnly",
+    "test": "npm run build && npm run testOnly",
     "testOnly": "npm run coverage",
     "start": "npm run build && node ./build/ignoreCoverage/development.js",
-    "_prepareBuild": "rm -rf ./build",
-    "build": "npm run _prepareBuild && rimraf ./build && tsc && cp package.json ./build && cp README.md ./build",
+    "_prepareBuild": "rimraf ./build && rimraf ./dist && rimraf ./coverage",
+    "build": "npm run _prepareBuild && rimraf ./build && tsc && cp package.json ./build && cp README.md ./build && npm run packForDist",
+    "packForDist": "npx ncc build ./build/index.js --license LICENSE.md",
     "dev": "nodemon",
-    "_prepareUpload": "npm run build && rm -rf ./coverage && rm -rf ./build/tests",
+    "_prepareUpload": "npm run build && rimraf ./coverage && rimraf ./build/tests",
     "_uploadBuild": "cd ./build && npm pack && npm publish && cd ..",
     "_uploadWithoutPatch": "npm run _prepareUpload && npm run _uploadBuild && npm run clean",
     "upload": "npm version patch && npm run _uploadWithoutPatch",
-    "clean": "gts clean",
+    "clean": "rimraf ./build && rimraf ./coverage && gts clean",
     "lint": "gts lint",
     "fix": "gts fix"
   },
@@ -53,7 +54,8 @@
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.3",
     "ts-node": "^10.0.0",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "@vercel/ncc": "^0.29.0"
   },
   "dependencies": {
     "@babel/preset-typescript": "^7.14.5",
