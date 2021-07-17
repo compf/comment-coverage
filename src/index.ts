@@ -1,5 +1,5 @@
-import core from '@actions/core';
-import github from '@actions/github';
+const core = require('@actions/core');
+const github = require('@actions/github');
 const execSync = require('child_process').execSync;
 
 console.log('Start Index');
