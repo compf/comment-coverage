@@ -2,8 +2,8 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs');
 
-console.log("Start Index");
-let testFolder = "./";
+console.log('Start Index');
+let testFolder = './';
 fs.readdirSync(testFolder).forEach(readFile);
 
 try {
