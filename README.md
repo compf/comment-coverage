@@ -70,7 +70,7 @@ jobs:
 
       - name: Hello world action step
         id: hello
-        uses: FireboltCasters/comment-coverage@v1.8
+        uses: FireboltCasters/comment-coverage@v1.11
         with:
           minPercentageCoverage: '80'
       # Use the output from the `hello` step
