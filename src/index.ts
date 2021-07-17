@@ -4,23 +4,23 @@ const execSync = require('child_process').execSync;
 const fs = require('fs');
 
 const TsConfigJSON = {
-  "include": ["src/**/*.ts", "src/**/*.js"],
-  "exclude": ["src/tests/**/*", "src/ignoreCoverage/**/*"]
+  include: ['src/**/*.ts', 'src/**/*.js'],
+  exclude: ['src/tests/**/*', 'src/ignoreCoverage/**/*'],
 };
 
 console.log('Start Index');
 runDocumentation();
 
 function runDocumentation() {
-  console.log("Install compodoc");
+  console.log('Install compodoc');
   const installOutput = execSync('npm install @compodoc/compodoc@1.0.5', {
     encoding: 'utf-8',
   });
   let output = '';
-  console.log("Write tsconfic.doc.json");
+  console.log('Write tsconfic.doc.json');
   let stringJSON = JSON.stringify(TsConfigJSON, null, 2);
   console.log(stringJSON);
-  fs.writeFileSync ("./tsconfig.doc.json", stringJSON);
+  fs.writeFileSync('./tsconfig.doc.json', stringJSON);
 
   try {
     output = execSync('npx compodoc -p tsconfig.doc.json --coverageTest', {
