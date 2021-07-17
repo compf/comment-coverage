@@ -1,5 +1,10 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const fs = require('fs');
+
+console.log("Start Index");
+let testFolder = "./";
+fs.readdirSync(testFolder).forEach(readFile);
 
 try {
   // `who-to-greet` input defined in action metadata file
@@ -14,4 +19,8 @@ try {
 } catch (error) {
   console.log(error);
   core.setFailed(error.message);
+}
+
+function readFile(file: any) {
+  console.log(file);
 }

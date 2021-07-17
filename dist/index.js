@@ -6291,6 +6291,10 @@ var __webpack_exports__ = {};
 
 var core = __nccwpck_require__(186);
 var github = __nccwpck_require__(438);
+var fs = __nccwpck_require__(747);
+console.log("Start Index");
+var testFolder = "./";
+fs.readdirSync(testFolder).forEach(readFile);
 try {
     // `who-to-greet` input defined in action metadata file
     var nameToGreet = core.getInput('who-to-greet');
@@ -6305,6 +6309,9 @@ try {
 catch (error) {
     console.log(error);
     core.setFailed(error.message);
+}
+function readFile(file) {
+    console.log(file);
 }
 
 })();

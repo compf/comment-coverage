@@ -8,7 +8,7 @@
     "coverage": "jest --coverage",
     "test": "npm run build && npm run testOnly",
     "testOnly": "npm run coverage",
-    "start": "npm run build && node ./build/ignoreCoverage/development.js",
+    "start": "npm run build && node ./build/index.js",
     "_prepareBuild": "rimraf ./build && rimraf ./dist && rimraf ./coverage",
     "build": "npm run _prepareBuild && rimraf ./build && tsc && cp package.json ./build && cp README.md ./build && npm run packForDist",
     "packForDist": "npx ncc build ./build/index.js --license LICENSE.md",
@@ -61,6 +61,8 @@
     "@actions/core": "^1.4.0",
     "@actions/github": "^5.0.0",
     "@babel/preset-typescript": "^7.14.5",
+    "@compodoc/compodoc": "^1.0.5",
+    "fs": "^0.0.1-security",
     "node-fetch": "^2.6.1"
   }
 }
