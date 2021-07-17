@@ -13,6 +13,6 @@ export default class Consys {
    * @returns {number} number which was given as input
    */
   static exampleValue(number: number): number {
-    return number;
+    return number; //useless change
   }
 }
