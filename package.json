@@ -62,7 +62,7 @@
     "@actions/github": "^5.0.0",
     "@babel/preset-typescript": "^7.14.5",
     "@compodoc/compodoc": "^1.0.5",
-    "fs": "^0.0.1-security",
+    "fs": "^0.0.2",
     "node-fetch": "^2.6.1"
   }
 }
