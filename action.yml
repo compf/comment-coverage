@@ -5,10 +5,14 @@ inputs:
     description: 'The minimum percentage coverage'
     required: true
     default: '80'
-  includeFolders: # id of input
+  include: # id of input
     description: 'The folders to include'
     required: false
-    default: './src'
+    default: "src/**/*.ts src/**/*.js"
+  exclude: # id of input
+    description: 'The folders to include'
+    required: false
+    default: "src/tests/**/* src/ignoreCoverage/**/*"
 outputs:
   time: # id of output
     description: 'The time we greeted you'

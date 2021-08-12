@@ -8,7 +8,35 @@ const TsConfigJSON = {
   "exclude": ["src/tests/**/*", "src/ignoreCoverage/**/*"]
 };
 
-console.log('Start Index');
+const LIST_SEPERATOR = " ";
+
+try{
+  let include = core.getInput("include");
+  TsConfigJSON.include = include.split(LIST_SEPERATOR);
+} catch (err){
+  console.log("Variable: <include> not filled");
+  console.log(err);
+}
+
+try {
+  let exclude = core.getInput("exclude");
+  TsConfigJSON.exclude = exclude.split(LIST_SEPERATOR);
+} catch (err){
+  console.log("Variable: <exclude> not filled");
+  console.log(err);
+}
+
+let minPercentageCoverage = 80;
+try{
+  let minPercentageCoverageRaw = core.getInput("minPercentageCoverage")
+  minPercentageCoverage = parseInt(minPercentageCoverageRaw);
+} catch (err){
+  console.log("Could not parse variable: <minPercentageCoverage>");
+  console.log("minPercentageCoverageRaw: "+minPercentageCoverage);
+  console.log(err);
+}
+
+
 runDocumentation();
 
 function runDocumentation() {
@@ -40,7 +68,7 @@ function runDocumentation() {
     let coverage = parseInt(result.split('(')[1]);
     if (!isNaN(coverage)) {
       console.log('Coverage is: ' + coverage);
-      if (coverage > 10) {
+      if (coverage > minPercentageCoverage) {
         console.log('This is fine :-)');
         return true;
       } else {
