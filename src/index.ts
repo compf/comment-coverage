@@ -8,34 +8,33 @@ const TsConfigJSON = {
   exclude: ['src/tests/**/*', 'src/ignoreCoverage/**/*'],
 };
 
-const LIST_SEPERATOR = " ";
+const LIST_SEPERATOR = ' ';
 
-try{
-  let include = core.getInput("include");
+try {
+  let include = core.getInput('include');
   TsConfigJSON.include = include.split(LIST_SEPERATOR);
-} catch (err){
-  console.log("Variable: <include> not filled");
+} catch (err) {
+  console.log('Variable: <include> not filled');
   console.log(err);
 }
 
 try {
-  let exclude = core.getInput("exclude");
+  let exclude = core.getInput('exclude');
   TsConfigJSON.exclude = exclude.split(LIST_SEPERATOR);
-} catch (err){
-  console.log("Variable: <exclude> not filled");
+} catch (err) {
+  console.log('Variable: <exclude> not filled');
   console.log(err);
 }
 
 let minPercentageCoverage = 80;
-try{
-  let minPercentageCoverageRaw = core.getInput("minPercentageCoverage")
+try {
+  let minPercentageCoverageRaw = core.getInput('minPercentageCoverage');
   minPercentageCoverage = parseInt(minPercentageCoverageRaw);
-} catch (err){
-  console.log("Could not parse variable: <minPercentageCoverage>");
-  console.log("minPercentageCoverageRaw: "+minPercentageCoverage);
+} catch (err) {
+  console.log('Could not parse variable: <minPercentageCoverage>');
+  console.log('minPercentageCoverageRaw: ' + minPercentageCoverage);
   console.log(err);
 }
-
 
 runDocumentation();
 

@@ -8,11 +8,11 @@ inputs:
   include: # id of input
     description: 'The folders to include'
     required: false
-    default: "src/**/*.ts src/**/*.js"
+    default: 'src/**/*.ts src/**/*.js'
   exclude: # id of input
     description: 'The folders to include'
     required: false
-    default: "src/tests/**/* src/ignoreCoverage/**/*"
+    default: 'src/tests/**/* src/ignoreCoverage/**/*'
 outputs:
   time: # id of output
     description: 'The time we greeted you'
