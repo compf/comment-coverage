@@ -1,0 +1,21 @@
+name: 'Comment coverage'
+description: 'JavaScript commenting coverage'
+inputs:
+  minPercentageCoverage: # id of input
+    description: 'The minimum percentage coverage'
+    required: true
+    default: '80'
+  include: # id of input
+    description: 'The folders to include'
+    required: false
+    default: 'src/**/*.ts src/**/*.js'
+  exclude: # id of input
+    description: 'The folders to include'
+    required: false
+    default: 'src/tests/**/* src/ignoreCoverage/**/*'
+outputs:
+  time: # id of output
+    description: 'The time we greeted you'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
